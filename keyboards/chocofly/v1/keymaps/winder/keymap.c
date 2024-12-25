@@ -1,6 +1,9 @@
 // Copyright 2022 Will Winder (@winder)
 // SPDX-License-Identifier: GPL-2.0-or-later
 //
+// qmk compile -kb chocofly/v1 -km winder
+// qmk flash -kb chocofly/v1 -km winder
+//
 #include QMK_KEYBOARD_H
 
 enum layers {
