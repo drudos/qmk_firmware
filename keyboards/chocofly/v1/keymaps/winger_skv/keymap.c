@@ -42,20 +42,36 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 };
 
-const uint16_t PROGMEM lshft_par[] = {KC_Z, KC_X, COMBO_END};
-const uint16_t PROGMEM rshft_par[] = {KC_DOT, KC_SLSH, COMBO_END};
-const uint16_t PROGMEM esc_grv[] = {KC_Q, KC_W, COMBO_END};
-const uint16_t PROGMEM tab[] = {KC_A, KC_S, COMBO_END};
-const uint16_t PROGMEM space[] = {KC_S, KC_D, COMBO_END};
-const uint16_t PROGMEM enter[] = {KC_K, KC_L, COMBO_END};
+// define combo names
+enum combos {
+    lshft_par,
+    rshft_par,
+    esc_grv,
+    tab,
+    space,
+    enter,
+    COMBO_LENGTH
+};
 
+// nifty trick continued
+uint16_t COMBO_LEN = COMBO_LENGTH;
+
+// define keys that make up combos
+    const uint16_t PROGMEM zx_combo[] = {KC_Z, KC_X, COMBO_END};
+    const uint16_t PROGMEM ds_combo[] = {KC_DOT, KC_SLSH, COMBO_END};
+    const uint16_t PROGMEM qw_combo[] = {KC_Q, KC_W, COMBO_END};
+    const uint16_t PROGMEM as_combo[] = {KC_A, KC_S, COMBO_END};
+    const uint16_t PROGMEM sd_combo[] = {KC_S, KC_D, COMBO_END};
+    const uint16_t PROGMEM kl_combo[] = {KC_K, KC_L, COMBO_END};
+
+// map combo names to their keys and the key they trigger
 combo_t key_combos[] = {
-    COMBO(lshft_par, SC_LSPO),
-    COMBO(rshft_par, SC_RSPC),
-    COMBO(esc_grv, QK_GESC),
-    COMBO(tab, KC_TAB),
-    COMBO(space, KC_SPC),
-    COMBO(enter, KC_ENT),
+    [lshft_par] = COMBO(zx_combo, SC_LSPO),
+    [rshft_par] = COMBO(ds_combo, SC_RSPC),
+    [esc_grv] = COMBO(qw_combo, QK_GESC),
+    [tab] = COMBO(as_combo, KC_TAB),
+    [space] = COMBO(sd_combo, KC_SPC),
+    [enter] = COMBO(kl_combo, KC_ENT),
 };
 
 #ifdef ENCODER_ENABLE
